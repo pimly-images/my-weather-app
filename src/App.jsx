@@ -128,4 +128,37 @@ function App() {
           )}
 
           {temp >= 25 && (
-            <div style={{ marginTop: '20px', padding: '15px', border: '2px dashed #ff4
+            <div style={{ marginTop: '20px', padding: '15px', border: '2px dashed #ff4757', borderRadius: '15px', backgroundColor: 'rgba(255, 71, 87, 0.1)' }}>
+              <p style={{ color: '#ee5253', fontWeight: 'bold', marginBottom: '10px' }}>暑くなってきましたね！☀️</p>
+              <div style={{ display: 'flex', gap: '10px', justifyContent: 'center' }}>
+                <a href={`https://www.amazon.co.jp/s?k=ハンディファン&tag=Pimly-22`} target="_blank" rel="noopener noreferrer" style={{ backgroundColor: '#ff4757', color: 'white', padding: '10px 15px', borderRadius: '8px', textDecoration: 'none', fontWeight: 'bold', fontSize: '14px' }}>ハンディファン ❄️</a>
+                <a href={`https://www.amazon.co.jp/s?k=日焼け止め&tag=Pimly-22`} target="_blank" rel="noopener noreferrer" style={{ backgroundColor: '#ffa502', color: 'white', padding: '10px 15px', borderRadius: '8px', textDecoration: 'none', fontWeight: 'bold', fontSize: '14px' }}>日焼け止め 🧴</a>
+              </div>
+            </div>
+          )}
+
+          <div style={{ marginTop: '20px', borderTop: '1px solid #ddd', paddingTop: '10px', fontSize: '14px', color: '#666' }}>
+            <p>風速：{windSpeed} m/s | 空：{weather.weather[0].description}</p>
+          </div>
+        </div>
+
+        {tomorrow && (
+          <div style={{ background: 'rgba(0,0,0,0.6)', padding: '20px', borderRadius: '20px', marginTop: '20px', color: 'white' }}>
+            <h3 style={{ margin: '0 0 10px 0' }}>明日の予報</h3>
+            <p style={{ fontSize: '24px', fontWeight: 'bold' }}>
+              {Math.round(tomorrow.main.temp)}°C / {tomorrow.weather[0].description}
+            </p>
+            {tomorrow.main.temp <= 10 && (
+              <div style={{ marginTop: '10px', borderTop: '1px solid #555', paddingTop: '10px' }}>
+                <p>🧣 明日は冷え込みます。準備はお済みですか？</p>
+                <a href={`https://www.amazon.co.jp/s?k=マフラー&tag=Pimly-22`} target="_blank" rel="noopener noreferrer" style={{ color: '#FF9900', fontWeight: 'bold', textDecoration: 'none' }}>Amazonでマフラーをチェック</a>
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+    </div>
+  )
+}
+
+export default App
