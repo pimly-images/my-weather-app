@@ -73,37 +73,7 @@ const handleSearch = (e) => {
       backgroundSize: 'cover', backgroundPosition: 'center', color: 'white',
       fontFamily: 'sans-serif'
     }}>
-      <h1>お天気アドバイザー</h1>
-
-      <form onSubmit={handleSearch} style={{ marginBottom: '20px' }}>
-  <input
-    type="text"
-    value={inputValue}
-    onChange={(e) => setInputValue(e.target.value)}
-    placeholder="都市名を英語で入力（例: Paris）"
-    style={{
-      padding: '10px',
-      borderRadius: '5px 0 0 5px',
-      border: 'none',
-      width: '200px'
-    }}
-  />
-  <button
-    type="submit"
-    style={{
-      padding: '10px 20px',
-      borderRadius: '0 5px 5px 0',
-      border: 'none',
-      backgroundColor: '#ff6b6b',
-      color: 'white',
-      cursor: 'pointer',
-      fontWeight: 'bold'
-    }}
-  >
-    検索
-  }
-</button>
-</form>
+      <h1>お天気アドバイス</h1>      
 
       <div style={{ marginBottom: '20px' }}>
         {cities.map((c) => (
@@ -112,6 +82,46 @@ const handleSearch = (e) => {
           </button>
         ))}
       </div>
+
+{/* 都市ボタンのリスト */}
+      <div style={{ marginBottom: '10px' }}>
+        {cities.map((c) => (
+          <button key={c.name} onClick={() => setCity(c.name)} style={{ margin: '5px', padding: '10px 15px', cursor: 'pointer', borderRadius: '5px', border: 'none', background: city === c.name ? '#ff6b6b' : 'white' }}>
+            {c.label}
+          </button>
+        ))}
+      </div>
+
+      {/* ★★★ ここに追加！検索窓 ★★★ */}
+      <form onSubmit={handleSearch} style={{ marginBottom: '20px' }}>
+        <input
+          type="text"
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+          placeholder="他の都市を英語で入力..."
+          style={{
+            padding: '10px',
+            borderRadius: '5px 0 0 5px',
+            border: 'none',
+            width: '180px',
+            outline: 'none'
+          }}
+        />
+        <button
+          type="submit"
+          style={{
+            padding: '10px 20px',
+            borderRadius: '0 5px 5px 0',
+            border: 'none',
+            backgroundColor: '#333',
+            color: 'white',
+            cursor: 'pointer',
+            fontWeight: 'bold'
+          }}
+        >
+          検索
+        </button>
+      </form>
 
       <div style={{ background: 'rgba(255,255,255,0.85)', padding: '30px', borderRadius: '20px', color: '#333', maxWidth: '500px', margin: '0 auto' }}>
         <h2>{weather.name}（現在）</h2>
