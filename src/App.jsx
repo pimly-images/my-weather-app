@@ -213,7 +213,7 @@ const handleSearch = (e) => {
           )}
         </div>
       )}
-    </div></div>
+    </div>
   )
 }
 
