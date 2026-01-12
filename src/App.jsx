@@ -91,7 +91,6 @@ const handleSearch = (e) => {
         boxShadow: '0 10px 30px rgba(0,0,0,0.2)',    // ふわっと浮かせる影
         fontFamily: 'sans-serif'
       }}>
-        <h1>お天気アドバイザー</h1>
         
         {/* --- ここから下に、今までのボタンや検索窓が続きます --- */}
       <h1>お天気アドバイス</h1>      
