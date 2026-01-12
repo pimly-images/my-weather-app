@@ -31,28 +31,9 @@ const cities = [
       // 5日間予報（3時間おき）の中から、約24時間後（インデックス[8]）を明日として保存
       if (data.list) setTomorrow(data.list[8]);
     });
-}, [city]);{/* --- 今日の天気のすぐ下に追加 --- */}
-{tomorrow && (
-  <div style={{ marginTop: '20px', padding: '15px', background: 'rgba(255,255,255,0.1)', borderRadius: '15px' }}>
-    <h3 style={{ fontSize: '18px' }}>明日の予報</h3>
-    <p style={{ fontSize: '22px' }}>{Math.round(tomorrow.main.temp)}°C / {tomorrow.weather[0].description}</p>
-    
-    {/* 明日が10度以下ならマフラーボタンを出す */}
-    {tomorrow.main.temp <= 10 && (
-      <div style={{ marginTop: '10px' }}>
-        <p>🧣 明日は冷え込みます。マフラーを忘れずに！</p>
-        <a 
-          href={`https://www.amazon.co.jp/s?k=マフラー&tag=Pimly-22`}
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{ color: '#FF9900', fontWeight: 'bold' }}
-        >
-          Amazonでマフラーを準備する
-        </a>
-      </div>
-    )}
-  </div>
-)}
+}, [city]);
+
+  if (!weather) return <div style={{ textAlign: 'center', marginTop: '50px' }}>読み込み中...</div>;
 
   // --- 1. データの取り出し ---
   const temp = weather.main.temp;
@@ -165,6 +146,30 @@ const cities = [
           <p>風速：{windSpeed} m/s | 空：{weather.weather[0].description}</p>
         </div>
       </div>
+
+{/* --- 今日の天気のすぐ下に追加 --- */}
+{tomorrow && (
+  <div style={{ marginTop: '20px', padding: '15px', background: 'rgba(255,255,255,0.1)', borderRadius: '15px' }}>
+    <h3 style={{ fontSize: '18px' }}>明日の予報</h3>
+    <p style={{ fontSize: '22px' }}>{Math.round(tomorrow.main.temp)}°C / {tomorrow.weather[0].description}</p>
+    
+    {/* 明日が10度以下ならマフラーボタンを出す */}
+    {tomorrow.main.temp <= 10 && (
+      <div style={{ marginTop: '10px' }}>
+        <p>🧣 明日は冷え込みます。マフラーを忘れずに！</p>
+        <a 
+          href={`https://www.amazon.co.jp/s?k=マフラー&tag=Pimly-22`}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ color: '#FF9900', fontWeight: 'bold' }}
+        >
+          Amazonでマフラーを準備する
+        </a>
+      </div>
+    )}
+  </div>
+)}
+
     </div>
   )
 }
