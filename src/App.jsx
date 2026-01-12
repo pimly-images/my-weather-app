@@ -4,7 +4,7 @@ function App() {
   // 表示する都市を管理する（初期値は Tokyo）
   const [city, setCity] = useState('Tokyo');
   const [weather, setWeather] = useState(null);
-  cconst API_KEY = import.meta.env.VITE_WEATHER_API_KEY; // ← 自分のキーが入っているか確認！
+  const API_KEY = import.meta.env.VITE_WEATHER_API_KEY; // ← 自分のキーが入っているか確認！
 
   // 五大都市のリスト
 const cities = [
