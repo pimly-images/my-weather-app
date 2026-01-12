@@ -67,7 +67,6 @@ const handleSearch = (e) => {
   else if (weatherMain === "Snow") { rainAdvice = " ☃️ 雪だね！滑りにくい靴と傘を準備して。"; }
 
   return (
-    return (
     <div style={{ 
       display: 'flex',           // センター配置のための魔法
       justifyContent: 'center',  // 横方向の真ん中
