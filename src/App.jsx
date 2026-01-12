@@ -78,6 +78,33 @@ const cities = [
         
         {/* 風のアドバイスがあれば表示 */}
         {windAdvice && <p style={{ color: '#007bff', fontWeight: 'bold' }}>{windAdvice}</p>}
+
+{/* --- マフラー（寒い時）のアドバイスとボタン --- */}
+{temp <= 10 && (
+  <div style={{ marginTop: '20px', padding: '15px', border: '2px dashed #007bff', borderRadius: '15px', backgroundColor: 'rgba(0, 123, 255, 0.1)' }}>
+    <p style={{ color: '#0056b3', fontWeight: 'bold', marginBottom: '10px' }}>
+      寒いです！マフラーで首元を温めましょう。
+    </p>
+    <a 
+      href={`https://www.amazon.co.jp/s?k=マフラー+レディース+メンズ&tag=Pimly-22`} 
+      target="_blank" 
+      rel="noopener noreferrer"
+      style={{
+        display: 'inline-block',
+        backgroundColor: '#007bff', // 寒いので青系のボタン
+        color: 'white',
+        padding: '12px 24px',
+        borderRadius: '8px',
+        textDecoration: 'none',
+        fontWeight: 'bold',
+        boxShadow: '0 4px 6px rgba(0,0,0,0.1)'
+      }}
+    >
+      Amazonでマフラーを探す 🧣
+    </a>
+  </div>
+)}
+
         {/* --- true && を rainAdvice && に戻す --- */}
         {rainAdvice && (
           <div style={{ marginTop: '20px', padding: '15px', border: '2px dashed #FF9900', borderRadius: '15px', backgroundColor: 'rgba(255, 153, 0, 0.1)' }}>
