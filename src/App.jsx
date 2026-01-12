@@ -78,19 +78,16 @@ const cities = [
         
         {/* 風のアドバイスがあれば表示 */}
         {windAdvice && <p style={{ color: '#007bff', fontWeight: 'bold' }}>{windAdvice}</p>}
-        {/* --- {rainAdvice && ( を {true && ( に書き換える --- */}
-        {true && (
+        {rainAdvice && (
           <div style={{ marginTop: '20px', padding: '15px', border: '2px dashed #FF9900', borderRadius: '15px', backgroundColor: 'rgba(255, 153, 0, 0.1)' }}>
-            <p style={{ color: '#d35400', fontWeight: 'bold', marginBottom: '10px' }}>
-              {rainAdvice || "今日のおすすめアイテム"} {/* メッセージがない時のための予備テキスト */}
-            </p>
+            <p style={{ color: '#d35400', fontWeight: 'bold', marginBottom: '10px' }}>{rainAdvice}</p>
             <a 
               href={`https://www.amazon.co.jp/s?k=折りたたみ傘&tag=Pimly-22`} 
               target="_blank" 
               rel="noopener noreferrer"
               style={{
                 display: 'inline-block',
-                backgroundColor: '#FF9900',
+                backgroundColor: '#FF9900', // Amazonのオレンジ
                 color: 'white',
                 padding: '12px 24px',
                 borderRadius: '8px',
