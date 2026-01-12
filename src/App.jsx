@@ -72,6 +72,7 @@ const handleSearch = (e) => {
       justifyContent: 'center',  // 横方向の真ん中
       alignItems: 'center',      // 縦方向の真ん中
       minHeight: '100vh',        // 画面の高さ一杯に広げる
+      width: '100%',
       backgroundColor: '#f0f2f5', // 画面全体の背景色（薄いグレー）
       padding: '20px'
     }}>
