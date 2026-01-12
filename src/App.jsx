@@ -75,6 +75,15 @@ const handleSearch = (e) => {
     }}>
       <h1>お天気アドバイス</h1>      
 
+{/* 都市ボタンのリスト */}
+      <div style={{ marginBottom: '10px' }}>
+        {cities.map((c) => (
+          <button key={c.name} onClick={() => setCity(c.name)} style={{ margin: '5px', padding: '10px 15px', cursor: 'pointer', borderRadius: '5px', border: 'none', background: city === c.name ? '#ff6b6b' : 'white' }}>
+            {c.label}
+          </button>
+        ))}
+      </div>
+
       {/* ★★★ ここに追加！検索窓 ★★★ */}
       <form onSubmit={handleSearch} style={{ marginBottom: '20px' }}>
         <input
