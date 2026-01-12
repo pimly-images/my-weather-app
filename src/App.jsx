@@ -66,7 +66,7 @@ function App() {
   return (
     <div style={{ 
       display: 'flex', justifyContent: 'center', alignItems: 'center', 
-      minHeight: '100vh', width: '100vw', backgroundColor: 'skyblue', padding: '20px'
+      minHeight: '100vh', width: '100vw', backgroundColor: 'skyblue', padding: '20px',boxSizing: 'border-box'
     }}>
       <div style={{ 
         width: '100%', maxWidth: '500px', textAlign: 'center',
