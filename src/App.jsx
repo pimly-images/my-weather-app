@@ -5,6 +5,7 @@ function App() {
   const [weather, setWeather] = useState(null);
   // 【修正】明日の予報を保存する箱を追加
   const [tomorrow, setTomorrow] = useState(null); 
+  const [inputValue, setInputValue] = useState('');
 
   const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
 
@@ -15,6 +16,14 @@ function App() {
     { name: 'Sapporo', label: '札幌', img: 'https://images.unsplash.com/photo-1572420780547-8fbb45c82f0a?w=1600&auto=format&fit=crop&q=60' },
     { name: 'Fukuoka', label: '福岡', img: 'https://images.unsplash.com/photo-1750519422241-fdcccf199799?w=1600&auto=format&fit=crop&q=60' },
   ];
+
+const handleSearch = (e) => {
+  e.preventDefault(); // 画面のリロードを防ぐ
+  if (inputValue) {
+    setCity(inputValue); // 入力された文字を都市名としてセット
+    setInputValue('');   // 検索窓を空にする
+  }
+};
 
   useEffect(() => {
     setWeather(null);
@@ -65,6 +74,36 @@ function App() {
       fontFamily: 'sans-serif'
     }}>
       <h1>お天気アドバイザー</h1>
+
+      <form onSubmit={handleSearch} style={{ marginBottom: '20px' }}>
+  <input
+    type="text"
+    value={inputValue}
+    onChange={(e) => setInputValue(e.target.value)}
+    placeholder="都市名を英語で入力（例: Paris）"
+    style={{
+      padding: '10px',
+      borderRadius: '5px 0 0 5px',
+      border: 'none',
+      width: '200px'
+    }}
+  />
+  <button
+    type="submit"
+    style={{
+      padding: '10px 20px',
+      borderRadius: '0 5px 5px 0',
+      border: 'none',
+      backgroundColor: '#ff6b6b',
+      color: 'white',
+      cursor: 'pointer',
+      fontWeight: 'bold'
+    }}
+  >
+    検索
+  }
+</button>
+</form>
 
       <div style={{ marginBottom: '20px' }}>
         {cities.map((c) => (
