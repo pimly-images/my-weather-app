@@ -211,7 +211,7 @@ const handleSearch = (e) => {
               </a>
             </div>
           )}
-        </div>
+        </div></div>
       )}
     </div>
   )
