@@ -35,11 +35,11 @@ function App() {
     fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=metric&lang=ja`)
       .then(res => res.json())
       .then(data => {
-        if (data.list) setTomorrow(data.list[8]);
+        if (data.list && data.list.length > 8) setTomorrow(data.list[8]);
       });
   }, [city, API_KEY]);
 
-  if (!weather) return <div style={{ textAlign: 'center', marginTop: '50px' }}>読み込み中...</div>;
+  if (!weather || !weather.weather) return <div style={{ textAlign: 'center', marginTop: '50px' }}>読み込み中...</div>;
 
   const temp = weather.main.temp;
   const windSpeed = weather.wind.speed;
@@ -100,7 +100,10 @@ function App() {
             placeholder="他の都市を英語で入力..."
             style={{ padding: '10px', borderRadius: '5px 0 0 5px', border: 'none', width: '180px', outline: 'none' }}
           />
-          <button type="submit" style={{ padding: '10px 20px', borderRadius: '0 5px 5px 0', border: 'none', backgroundColor: '#333', color: 'white', cursor: 'pointer', fontWeight: 'bold' }}>
+          <button type="submit" style={{ 
+            padding: '10px 20px', borderRadius: '0 5px 5px 0', border: 'none', 
+            backgroundColor: '#333', color: 'white', cursor: 'pointer', fontWeight: 'bold' 
+          }}>
             検索
           </button>
         </form>
