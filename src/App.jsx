@@ -78,8 +78,28 @@ const cities = [
         
         {/* 風のアドバイスがあれば表示 */}
         {windAdvice && <p style={{ color: '#007bff', fontWeight: 'bold' }}>{windAdvice}</p>}
-        {/* 【追加】雨のアドバイス */}
-        {rainAdvice && <p style={{ color: '#009688', fontWeight: 'bold' }}>{rainAdvice}</p>}
+        {rtrue && (
+          <div style={{ marginTop: '20px', padding: '15px', border: '2px dashed #FF9900', borderRadius: '15px', backgroundColor: 'rgba(255, 153, 0, 0.1)' }}>
+            <p style={{ color: '#d35400', fontWeight: 'bold', marginBottom: '10px' }}>{rainAdvice}</p>
+            <a 
+              href={`https://www.amazon.co.jp/s?k=折りたたみ傘&tag=Pimly-22`} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              style={{
+                display: 'inline-block',
+                backgroundColor: '#FF9900', // Amazonのオレンジ
+                color: 'white',
+                padding: '12px 24px',
+                borderRadius: '8px',
+                textDecoration: 'none',
+                fontWeight: 'bold',
+                boxShadow: '0 4px 6px rgba(0,0,0,0.1)'
+              }}
+            >
+              Amazonで傘を探す ☔️
+            </a>
+          </div>
+        )}
 
         <div style={{ marginTop: '20px', borderTop: '1px solid #ddd', paddingTop: '10px', fontSize: '14px', color: '#666' }}>
           <p>風速：{windSpeed} m/s | 空：{weather.weather[0].description}</p>
