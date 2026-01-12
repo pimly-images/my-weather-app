@@ -67,12 +67,33 @@ const handleSearch = (e) => {
   else if (weatherMain === "Snow") { rainAdvice = " ☃️ 雪だね！滑りにくい靴と傘を準備して。"; }
 
   return (
+    return (
     <div style={{ 
-      padding: '40px', textAlign: 'center', minHeight: '100vh',
-      backgroundImage: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(${bgImage})`,
-      backgroundSize: 'cover', backgroundPosition: 'center', color: 'white',
-      fontFamily: 'sans-serif'
+      display: 'flex',           // センター配置のための魔法
+      justifyContent: 'center',  // 横方向の真ん中
+      alignItems: 'center',      // 縦方向の真ん中
+      minHeight: '100vh',        // 画面の高さ一杯に広げる
+      backgroundColor: '#f0f2f5', // 画面全体の背景色（薄いグレー）
+      padding: '20px'
     }}>
+      {/* これが「本体」のカード */}
+      <div style={{ 
+        width: '100%',
+        maxWidth: '500px',        // アプリの最大幅
+        textAlign: 'center',
+        backgroundImage: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(${bgImage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        color: 'white',
+        padding: '40px 20px',
+        borderRadius: '30px',     // 角丸を強めに
+        border: '1px solid rgba(255, 255, 255, 0.3)', // 薄い色のボーダー
+        boxShadow: '0 10px 30px rgba(0,0,0,0.2)',    // ふわっと浮かせる影
+        fontFamily: 'sans-serif'
+      }}>
+        <h1>お天気アドバイザー</h1>
+        
+        {/* --- ここから下に、今までのボタンや検索窓が続きます --- */}
       <h1>お天気アドバイス</h1>      
 
 {/* 都市ボタンのリスト */}
