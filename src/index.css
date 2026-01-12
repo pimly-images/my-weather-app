@@ -12,6 +12,11 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+body {
+  margin: 0;         /* ← これが重要！ブラウザの隙間をゼロにします */
+  padding: 0;
+  overflow-x: hidden; /* 横スクロールが出ないようにガード */
+}
 
 a {
   font-weight: 500;
