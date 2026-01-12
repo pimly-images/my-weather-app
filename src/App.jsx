@@ -98,6 +98,37 @@ function App() {
           </div>
         )}
 
+        {/* --- 暑い時（25度以上）のボタン --- */}
+        {temp >= 25 && (
+          <div style={{ marginTop: '20px', padding: '15px', border: '2px dashed #ff4757', borderRadius: '15px', backgroundColor: 'rgba(255, 71, 87, 0.1)' }}>
+            <p style={{ color: '#ee5253', fontWeight: 'bold', marginBottom: '10px' }}>
+              暑くなってきましたね！熱中症対策を忘れずに ☀️
+            </p>
+            <div style={{ display: 'flex', gap: '10px', justifyContent: 'center' }}>
+              <a 
+                href={`https://www.amazon.co.jp/s?k=ハンディファン&tag=Pimly-22`} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                style={{
+                  backgroundColor: '#ff4757', color: 'white', padding: '10px 15px', borderRadius: '8px', textDecoration: 'none', fontWeight: 'bold', fontSize: '14px'
+                }}
+              >
+                ハンディファン ❄️
+              </a>
+              <a 
+                href={`https://www.amazon.co.jp/s?k=日焼け止め&tag=Pimly-22`} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                style={{
+                  backgroundColor: '#ffa502', color: 'white', padding: '10px 15px', borderRadius: '8px', textDecoration: 'none', fontWeight: 'bold', fontSize: '14px'
+                }}
+              >
+                日焼け止め 🧴
+              </a>
+            </div>
+          </div>
+        )}
+
         <div style={{ marginTop: '20px', borderTop: '1px solid #ddd', paddingTop: '10px', fontSize: '14px', color: '#666' }}>
           <p>風速：{windSpeed} m/s | 空：{weather.weather[0].description}</p>
         </div>
