@@ -124,8 +124,8 @@ const handleSearch = (e) => {
           style={{
             padding: '10px 20px',
             borderRadius: '0 5px 5px 0',
-            border: 'none',
-            backgroundColor: '#333',
+            border: '1px solid rgba(255,255,255,0.5)',
+            background: city === c.name ? '#ff6b6b' : 'rgba(0, 0, 0, 0.5)',
             color: 'white',
             cursor: 'pointer',
             fontWeight: 'bold'
