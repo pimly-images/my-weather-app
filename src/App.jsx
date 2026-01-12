@@ -15,28 +15,44 @@ const cities = [
     { name: 'Fukuoka', label: '福岡', img: 'https://images.unsplash.com/photo-1750519422241-fdcccf199799?w=1600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8JUU1JThEJTlBJUU1JUE0JTlBfGVufDB8fDB8fHww?auto=format&fit=crop&w=800&q=80' },
   ];
 
- // fetchWeather 関数の中を以下のようにアップデート
-const fetchWeather = async () => {
-  try {
-    // 今日の天気
-    const currentRes = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric&lang=ja`
-    );
-    const currentData = await currentRes.json();
-    setWeather(currentData);
+ useEffect(() => {
+  setWeather(null);
+  setTomorrow(null); // 明日の分もリセット
 
-    // 【追加】明日の予報（5日間予報から取得）
-    const forecastRes = await fetch(
-      `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=metric&lang=ja`
-    );
-    const forecastData = await forecastRes.json();
+  // 今日の天気
+  fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric&lang=ja`)
+    .then(res => res.json())
+    .then(data => setWeather(data));
+
+  // 明日以降の予報（5 day forecast）
+  fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=metric&lang=ja`)
+    .then(res => res.json())
+    .then(data => {
+      // 5日間予報（3時間おき）の中から、約24時間後（インデックス[8]）を明日として保存
+      if (data.list) setTomorrow(data.list[8]);
+    });
+}, [city]);{/* --- 今日の天気のすぐ下に追加 --- */}
+{tomorrow && (
+  <div style={{ marginTop: '20px', padding: '15px', background: 'rgba(255,255,255,0.1)', borderRadius: '15px' }}>
+    <h3 style={{ fontSize: '18px' }}>明日の予報</h3>
+    <p style={{ fontSize: '22px' }}>{Math.round(tomorrow.main.temp)}°C / {tomorrow.weather[0].description}</p>
     
-    // リストの8番目（約24時間後）を「明日」としてセット
-    setTomorrowWeather(forecastData.list[8]); 
-  } catch (error) {
-    console.error("データ取得エラー:", error);
-  }
-};
+    {/* 明日が10度以下ならマフラーボタンを出す */}
+    {tomorrow.main.temp <= 10 && (
+      <div style={{ marginTop: '10px' }}>
+        <p>🧣 明日は冷え込みます。マフラーを忘れずに！</p>
+        <a 
+          href={`https://www.amazon.co.jp/s?k=マフラー&tag=Pimly-22`}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ color: '#FF9900', fontWeight: 'bold' }}
+        >
+          Amazonでマフラーを準備する
+        </a>
+      </div>
+    )}
+  </div>
+)}
 
   // --- 1. データの取り出し ---
   const temp = weather.main.temp;
@@ -153,35 +169,4 @@ const fetchWeather = async () => {
   )
 }
 
-{/* --- 今日の表示の下に追加 --- */}
-{tomorrowWeather && (
-  <div style={{ 
-    marginTop: '30px', 
-    padding: '20px', 
-    backgroundColor: 'rgba(255, 255, 255, 0.2)', 
-    borderRadius: '15px',
-    backdropFilter: 'blur(5px)' 
-  }}>
-    <h3>明日（同時刻）の予報</h3>
-    <p style={{ fontSize: '24px', fontWeight: 'bold' }}>
-      {Math.round(tomorrowWeather.main.temp)}°C
-    </p>
-    <p>{tomorrowWeather.weather[0].description}</p>
-    
-    {/* 明日の服装アドバイス */}
-    <p style={{ backgroundColor: '#fff', color: '#333', padding: '10px', borderRadius: '10px', marginTop: '10px' }}>
-      💡 明日は「{tomorrowWeather.main.temp <= 10 ? 'マフラー' : '今日と同じ格好'}」がおすすめ！
-    </p>
-    
-    {/* 明日のアフィボタン（マフラー） */}
-    {tomorrowWeather.main.temp <= 10 && (
-      <a 
-        href={`https://www.amazon.co.jp/s?k=マフラー&tag=Pimly-22`} 
-        style={{ color: '#ff9900', fontWeight: 'bold' }}
-      >
-        明日のためにAmazonでマフラーを準備 🧣
-      </a>
-    )}
-  </div>
-)}
 export default App
