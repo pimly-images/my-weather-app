@@ -44,12 +44,24 @@ function App() {
   const currentCityData = cities.find(c => c.name === city);
   const bgImage = currentCityData ? currentCityData.img : "";
 
-  let advice = "";
+let advice = "";
   let emoji = "";
-  if (temp <= 5) { advice = "極寒！ダウンとマフラー必須！"; emoji = "❄️"; }
-  else if (temp <= 15) { advice = "寒いね。厚手のコートを着よう。"; emoji = "🧥"; }
-  else if (temp <= 25) { advice = "過ごしやすい陽気。長袖でOK。"; emoji = "👕"; }
-  else { advice = "暑い！半袖で涼しく過ごしてね。"; emoji = "☀️"; }
+  if (temp <= 5) { 
+    advice = "極寒！ダウンとマフラー必須！"; 
+    emoji = "❄️"; 
+  } else if (temp <= 10) { 
+    advice = "かなり寒い。厚手のコートを着よう。"; 
+    emoji = "🧥"; 
+  } else if (temp <= 15) { 
+    advice = "肌寒いね。トレンチコートやジャケットを。"; 
+    emoji = "🧥"; 
+  } else if (temp <= 25) { 
+    advice = "過ごしやすい陽気。長袖やカーディガンでOK。"; 
+    emoji = "👕"; 
+  } else { 
+    advice = "暑い！半袖で涼しく過ごしてね。"; 
+    emoji = "☀️"; 
+  }
 
   const weatherMain = weather.weather[0].main;
   let rainAdvice = "";
@@ -106,12 +118,23 @@ function App() {
           <div style={{ fontSize: '50px', fontWeight: 'bold' }}>{Math.round(temp)}℃</div>
           <p style={{ fontSize: '20px', fontWeight: 'bold', color: '#ff6b6b' }}>{advice}</p>
           
-          {temp <= 10 && (
-            <div style={{ marginTop: '20px', padding: '15px', border: '2px dashed #007bff', borderRadius: '15px', backgroundColor: 'rgba(0, 123, 255, 0.1)' }}>
-              <p style={{ color: '#0056b3', fontWeight: 'bold', marginBottom: '10px' }}>寒いです！マフラーをしましょう。</p>
-              <a href="https://www.amazon.co.jp/s?k=マフラー&tag=Pimly-22" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-block', backgroundColor: '#007bff', color: 'white', padding: '10px 20px', borderRadius: '8px', textDecoration: 'none', fontWeight: 'bold' }}>Amazonで探す 🧣</a>
-            </div>
-          )}
+          {/* マフラーボタン（10度以下のとき） */}
+  {temp <= 10 && (
+    <div style={{ marginTop: '20px', padding: '15px', border: '2px dashed #007bff', borderRadius: '15px', backgroundColor: 'rgba(0, 123, 255, 0.1)' }}>
+      <p style={{ color: '#0056b3', fontWeight: 'bold', marginBottom: '10px' }}>
+        {temp <= 5 ? "マフラーとダウンで防寒を！" : "マフラーがあると安心な寒さです。"}
+      </p>
+      <a href={`https://www.amazon.co.jp/s?k=マフラー&tag=Pimly-22`} target="_blank" rel="noopener noreferrer" style={{ display: 'inline-block', backgroundColor: '#007bff', color: 'white', padding: '10px 20px', borderRadius: '8px', textDecoration: 'none', fontWeight: 'bold' }}>Amazonで探す 🧣</a>
+    </div>
+  )}
+
+  {/* ★新設：厚手のコートボタン（5度〜12度くらいの時） */}
+  {temp > 5 && temp <= 12 && (
+    <div style={{ marginTop: '20px', padding: '15px', border: '2px dashed #4b4b4b', borderRadius: '15px', backgroundColor: 'rgba(75, 75, 75, 0.1)' }}>
+      <p style={{ color: '#333', fontWeight: 'bold', marginBottom: '10px' }}>そろそろ厚手のコートの出番です！</p>
+      <a href={`https://www.amazon.co.jp/s?k=厚手+コート+レディース&tag=Pimly-22`} target="_blank" rel="noopener noreferrer" style={{ display: 'inline-block', backgroundColor: '#4b4b4b', color: 'white', padding: '10px 20px', borderRadius: '8px', textDecoration: 'none', fontWeight: 'bold' }}>コートをチェック 🧥</a>
+    </div>
+  )}
         </div>
 
         {tomorrow && (
