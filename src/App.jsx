@@ -56,7 +56,7 @@ function App() {
   else if (temp <= 10) { advice = "かなり寒い。厚手のコートを。"; emoji = "🧥"; }
   else if (temp <= 15) { advice = "肌寒いね。ジャケットが必要。"; emoji = "🧥"; }
   else if (temp <= 25) { advice = "過ごしやすい陽気。長袖でOK。"; emoji = "👕"; }
-  else if (temp <= 30) { advice = "暑い！半袖で涼しく過ごしてね。"; emoji = "🩴"; }
+  else if (temp <= 30) { advice = "暑い！半袖で涼しく過ごしてね。"; emoji = "🏖️"; }
   else { advice = "暑い！熱中症に気をつけてね！"; emoji = "☀️"; }
 
   return (
