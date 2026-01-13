@@ -94,7 +94,7 @@ function App() {
           <input
             type="text" value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
-            placeholder="City (English)..."
+            placeholder="調べたい都市名を英語で入力してね"
             style={{ padding: '10px', borderRadius: '5px 0 0 5px', border: 'none', width: '150px', outline: 'none' }}
           />
           <button type="submit" style={{ 
