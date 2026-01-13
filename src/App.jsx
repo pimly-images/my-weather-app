@@ -56,7 +56,8 @@ function App() {
   else if (temp <= 10) { advice = "かなり寒い。厚手のコートを。"; emoji = "🧥"; }
   else if (temp <= 15) { advice = "肌寒いね。ジャケットが必要。"; emoji = "🧥"; }
   else if (temp <= 25) { advice = "過ごしやすい陽気。長袖でOK。"; emoji = "👕"; }
-  else { advice = "暑い！半袖で涼しく過ごしてね。"; emoji = "☀️"; }
+  else if (temp <= 30) { advice = "暑い！半袖で涼しく過ごしてね。"; emoji = "🩴"; }
+  else { advice = "暑い！熱中症に気をつけてね！"; emoji = "☀️"; }
 
   return (
     <div style={{ 
@@ -94,7 +95,7 @@ function App() {
           <input
             type="text" value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
-            placeholder="調べたい都市名を英語で入力してね"
+            placeholder="調べたい都市名を英語で入力..."
             style={{ padding: '10px', borderRadius: '5px 0 0 5px', border: 'none', width: '150px', outline: 'none' }}
           />
           <button type="submit" style={{ 
@@ -145,6 +146,34 @@ function App() {
       }}
     >
       日焼け止めをチェック 🧴
+    </a>
+  </div>
+)}
+
+         {/* ★新設：ハンディファンボタン（25度〜30度の時） */}
+{temp >= 28 && temp <= 32 && (
+  <div style={{ 
+    marginTop: '10px', 
+    padding: '10px', 
+    border: '2px dashed #ffa502', 
+    borderRadius: '12px', 
+    backgroundColor: 'rgba(255, 165, 2, 0.05)' 
+  }}>
+    <p style={{ color: '#e67e22', fontWeight: 'bold', fontSize: '12px', marginBottom: '5px' }}>
+      真夏日です 🧊
+    </p>
+    <a 
+      href="https://www.amazon.co.jp/s?k=ハンディファン+最強&tag=Pimly-22" 
+      target="_blank" 
+      rel="noopener noreferrer" 
+      style={{ 
+        color: '#ffa502', 
+        textDecoration: 'none', 
+        fontWeight: 'bold', 
+        fontSize: '14px' 
+      }}
+    >
+      ハンディファンをチェック 🧴
     </a>
   </div>
 )}
