@@ -55,7 +55,8 @@ function App() {
   // --- 気温アドバイス ---
   let advice = "";
   let emoji = "";
-  if (temp <= 5) { advice = "極寒！ダウンとマフラー必須！"; emoji = "❄️"; }
+  if (temp <= 0) { advice = "極寒！カイロと熱燗で暖まろう！"; emoji = "❄️"; }
+  else if (temp <= 5) { advice = "極寒！ダウンとマフラー必須！"; emoji = "❄️"; }
   else if (temp <= 10) { advice = "かなり寒い。厚手のコートを。"; emoji = "🧥"; }
   else if (temp <= 15) { advice = "肌寒いね。ジャケットが必要。"; emoji = "🧥"; }
   else if (temp <= 25) { advice = "過ごしやすい陽気。長袖でOK。"; emoji = "👕"; }
@@ -132,7 +133,17 @@ function App() {
           <p style={{ fontSize: '12px', color: '#666' }}>風速: {windSpeed} m/s | {weather.weather[0].description}</p>
 
           {/* Amazonリンクボタン（以前と同様） */}
-          {temp <= 10 && (
+           {temp <= 0 && (
+  <>
+    <div style={{ marginTop: '10px', padding: '10px', border: '2px dashed #ff4757', borderRadius: '12px', backgroundColor: 'rgba(255, 71, 87, 0.05)' }}>
+      <a href="https://www.amazon.co.jp/s?k=カイロ&tag=Pimly-22" target="_blank" rel="noopener noreferrer" style={{ color: '#ff4757', textDecoration: 'none', fontWeight: 'bold', fontSize: '14px' }}>カイロで指先を温めて 🔥</a>
+    </div>
+    <div style={{ marginTop: '10px', padding: '10px', border: '2px dashed #007bff', borderRadius: '12px' }}>
+      <a href="https://www.amazon.co.jp/s?k=熱燗+セット&tag=Pimly-22" target="_blank" rel="noopener noreferrer" style={{ color: '#007bff', textDecoration: 'none', fontWeight: 'bold', fontSize: '14px' }}>今夜は熱燗で一杯 🍶</a>
+    </div>
+  </>
+)}
+          {temp > 1 && temp <= 10 && (
             <div style={{ marginTop: '10px', padding: '10px', border: '2px dashed #007bff', borderRadius: '12px' }}>
               <a href="https://www.amazon.co.jp/s?k=マフラー&tag=Pimly-22" target="_blank" rel="noopener noreferrer" style={{ color: '#007bff', textDecoration: 'none', fontWeight: 'bold', fontSize: '14px' }}>マフラーを探す 🧣</a>
             </div>
