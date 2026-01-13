@@ -121,6 +121,33 @@ function App() {
               <a href="https://www.amazon.co.jp/s?k=厚手+コート&tag=Pimly-22" target="_blank" rel="noopener noreferrer" style={{ color: '#333', textDecoration: 'none', fontWeight: 'bold', fontSize: '14px' }}>厚手のコートを探す 🧥</a>
             </div>
           )}
+          {/* ★新設：日焼け止めボタン（25度〜30度の時） */}
+{temp >= 25 && temp <= 30 && (
+  <div style={{ 
+    marginTop: '10px', 
+    padding: '10px', 
+    border: '2px dashed #ffa502', 
+    borderRadius: '12px', 
+    backgroundColor: 'rgba(255, 165, 2, 0.05)' 
+  }}>
+    <p style={{ color: '#e67e22', fontWeight: 'bold', fontSize: '12px', marginBottom: '5px' }}>
+      日差しが強くなってきましたね 🧴
+    </p>
+    <a 
+      href="https://www.amazon.co.jp/s?k=日焼け止め+最強&tag=Pimly-22" 
+      target="_blank" 
+      rel="noopener noreferrer" 
+      style={{ 
+        color: '#ffa502', 
+        textDecoration: 'none', 
+        fontWeight: 'bold', 
+        fontSize: '14px' 
+      }}
+    >
+      日焼け止めをチェック 🧴
+    </a>
+  </div>
+)}
         </div>
 
         {/* ★3日分予報エリア（横並び） */}
