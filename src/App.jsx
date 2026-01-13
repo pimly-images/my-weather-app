@@ -82,7 +82,8 @@ let advice = "";
         boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
         fontFamily: 'sans-serif'
       }}>
-        <h1 style={{ fontsize: '16px' }}>お天気といっしょ</h1>      
+        <h1 style={{ fontSize: '16px', margin: '0 0 20px 0', fontWeight: 'bold' }}>
+  お天気といっしょ</h1>
 
         <div style={{ marginBottom: '10px' }}>
           {cities.map((c) => (
