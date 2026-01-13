@@ -16,7 +16,7 @@ function App() {
     { name: 'Sapporo', label: '札幌', img: 'https://images.unsplash.com/photo-1572420780547-8fbb45c82f0a?w=1600&auto=format&fit=crop&q=60' },
     { name: 'Fukuoka', label: '福岡', img: 'https://images.unsplash.com/photo-1750519422241-fdcccf199799?w=1600&auto=format&fit=crop&q=60' },
     { name: 'New York', label: 'New York', img: 'https://images.unsplash.com/photo-1541336032412-2048a678540d?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=1600&auto=format&fit=crop&q=60' },
-    { name: 'Māwsynrām', label: 'Māwsynrām', img: 'https://images.unsplash.com/photo-1532375810709-75b1da00537c?q=80&w=1752&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=1600&auto=format&fit=crop&q=60' },
+    { name: 'Mawsynram', label: 'Māwsynrām', img: 'https://images.unsplash.com/photo-1532375810709-75b1da00537c?q=80&w=1752&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=1600&auto=format&fit=crop&q=60' },
   ];
 
   const handleSearch = (e) => {
