@@ -179,17 +179,30 @@ function App() {
       </div>
 
 {/* フッター：プライバシーポリシーへのリンク */}
-
-<div style={{ marginTop: '40px', paddingBottom: '30px', textAlign: 'center', color: 'white', opacity: 0.7 }}>
-  <p style={{ fontSize: '10px', marginBottom: '10px' }}>
+<div style={{ 
+  marginTop: '40px', 
+  paddingBottom: '30px', 
+  textAlign: 'center', 
+  color: 'white', 
+  opacity: 0.7,
+  /* ここ！ */
+  display: 'flex', 
+  flexDirection: 'column', 
+  alignItems: 'center', 
+  gap: '10px' 
+}}>
+  <p style={{ fontSize: '10px', margin: 0 }}>
     Data provided by <a href="https://openweathermap.org/" target="_blank" rel="noopener noreferrer" style={{ color: 'white' }}>OpenWeatherMap</a>
   </p>
-  <a 
-    href="/privacy.html" 
-    style={{ color: 'white', fontSize: '12px', textDecoration: 'underline' }}
-  >
-    プライバシーポリシー
-  </a>
+  
+  <div style={{ display: 'flex', gap: '15px' }}>
+    <a href="/clothing.html" style={{ color: 'white', fontSize: '12px', textDecoration: 'underline' }}>
+      服装の目安
+    </a>
+    <a href="/privacy.html" style={{ color: 'white', fontSize: '12px', textDecoration: 'underline' }}>
+      プライバシーポリシー
+    </a>
+  </div>
 </div>
 
     </div>
