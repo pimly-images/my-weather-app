@@ -86,7 +86,7 @@ function App() {
 
 <div style={{ display: 'flex', 
   flexDirection: 'column', 
-  alignItems: 'center',border: '1px solid red'}}>
+  alignItems: 'center',border: '10px solid red'}}>
 
       <div style={{ 
         width: '100%', maxWidth: '500px', textAlign: 'center',
