@@ -177,6 +177,17 @@ function App() {
           )}
         </div>
       </div>
+
+{/* フッター：プライバシーポリシーへのリンク */}
+<div style={{ marginTop: '40px', paddingBottom: '30px', textAlign: 'center' }}>
+  <a 
+    href="/privacy.html" 
+    style={{ color: 'white', fontSize: '12px', textDecoration: 'underline', opacity: 0.7 }}
+  >
+    プライバシーポリシー
+  </a>
+</div>
+
     </div>
   )
 }
