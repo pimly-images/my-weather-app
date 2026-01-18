@@ -77,14 +77,17 @@ function App() {
   else if (weatherMain === "Snow") rainAdvice = "☃️ 雪だね。滑らない靴で出かけて。";
 
   return (
-    <div style={{ display: 'flex', 
-  flexDirection: 'column', 
-  alignItems: 'center',border: '1px solid red'}}>
+    
     <div style={{ 
       display: 'flex', justifyContent: 'center', alignItems: 'center', 
       minHeight: '100vh', width: '100vw', backgroundColor: '#87CEEB', 
       margin: 0, padding: '20px', boxSizing: 'border-box'
     }}>
+
+<div style={{ display: 'flex', 
+  flexDirection: 'column', 
+  alignItems: 'center',border: '1px solid red'}}>
+
       <div style={{ 
         width: '100%', maxWidth: '500px', textAlign: 'center',
         backgroundImage: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(${bgImage})`,
