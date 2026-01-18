@@ -77,6 +77,9 @@ function App() {
   else if (weatherMain === "Snow") rainAdvice = "☃️ 雪だね。滑らない靴で出かけて。";
 
   return (
+    <div style={{ display: 'flex', 
+  flexDirection: 'column', 
+  alignItems: 'center',border:'1px' }}>
     <div style={{ 
       display: 'flex', justifyContent: 'center', alignItems: 'center', 
       minHeight: '100vh', width: '100vw', backgroundColor: '#87CEEB', 
@@ -185,7 +188,7 @@ function App() {
   textAlign: 'center', 
   color: 'white', 
   opacity: 0.7,
-  /* ここ！ */
+ 
   display: 'flex', 
   flexDirection: 'column', 
   alignItems: 'center', 
@@ -203,6 +206,8 @@ function App() {
       プライバシーポリシー
     </a>
   </div>
+</div>
+
 </div>
 
     </div>
