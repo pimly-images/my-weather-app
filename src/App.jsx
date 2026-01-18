@@ -79,7 +79,7 @@ function App() {
   return (
     <div style={{ display: 'flex', 
   flexDirection: 'column', 
-  alignItems: 'center',border:'1px' }}>
+  alignItems: 'center',border: '1px solid red'}}>
     <div style={{ 
       display: 'flex', justifyContent: 'center', alignItems: 'center', 
       minHeight: '100vh', width: '100vw', backgroundColor: '#87CEEB', 
