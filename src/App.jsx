@@ -184,6 +184,21 @@ function App() {
         </div>
       </div>
 
+<div style={{ 
+  backgroundColor: 'rgba(255, 255, 255, 0.1)', 
+  padding: '15px', 
+  borderRadius: '10px', 
+  margin: '20px 0', 
+  fontSize: '14px', 
+  textAlign: 'left',
+  lineHeight: '1.6'
+}}>
+  <h2 style={{ fontSize: '16px', margin: '0 0 10px 0' }}>💡 このアプリについて</h2>
+  <p>
+    「お天気といっしょ」は、単なる気温だけでなく、<b>風速1m/sにつき体感温度が1度下がる</b>という気象学的な視点を取り入れた服装アドバイスアプリです。<br />
+    「予報では暖かそうだったのに、風が強くて寒かった…」そんな失敗をなくすために、OpenWeatherMapの最新データから最適な服装を提案します。
+  </p>
+</div>
 {/* フッター：プライバシーポリシーへのリンク */}
 <div style={{ 
   marginTop: '40px', 
