@@ -212,9 +212,7 @@ function App() {
   alignItems: 'center', 
   gap: '10px' 
 }}>
-  <p style={{ fontSize: '10px', margin: 0 }}>
-    Data provided by <a href="https://openweathermap.org/" target="_blank" rel="noopener noreferrer" style={{ color: 'white' }}>OpenWeatherMap</a>
-  </p>
+  
   
   <div style={{ display: 'flex', gap: '15px' }}>
     <a href="/clothing.html" style={{ color: 'white', fontSize: '12px', textDecoration: 'underline' }}>
@@ -224,6 +222,11 @@ function App() {
       プライバシーポリシー
     </a>
   </div>
+
+<p style={{ fontSize: '10px', margin: 0 }}>
+    Data provided by <a href="https://openweathermap.org/" target="_blank" rel="noopener noreferrer" style={{ color: 'white' }}>OpenWeatherMap</a>
+  </p>
+
 </div>
 
 </div>
