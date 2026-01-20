@@ -9,29 +9,15 @@ function App() {
 
   const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
 
-  // 画像を消して、名前とラベルだけに絞ったスリムな配列にするお
-const cities = [
-  { name: 'Tokyo', label: '東京' },
-  { name: 'Osaka', label: '大阪' },
-  { name: 'Nagoya', label: '名古屋' },
-  { name: 'Sapporo', label: '札幌' },
-  { name: 'Fukuoka', label: '福岡' },
-  { name: 'New York', label: 'New York' },
-  { name: 'Mawsynram', label: 'Māwsynrām' },
-];
-
-// そのすぐ下に、今回提案した背景色関数を置く
-const getBackgroundColor = (weather) => {
-  switch (weather) {
-    case 'Clear': return 'linear-gradient(135deg, #FFD700, #FF8C00)';
-    case 'Clouds': return 'linear-gradient(135deg, #bdc3c7, #2c3e50)';
-    case 'Rain':
-    case 'Drizzle':
-    case 'Thunderstorm': return 'linear-gradient(135deg, #4b6cb7, #182848)';
-    case 'Snow': return 'linear-gradient(135deg, #e6fbff, #87cefa)';
-    default: return 'linear-gradient(135deg, #87CEEB, #E0F7FA)';
-  }
-};
+  const cities = [
+    { name: 'Tokyo', label: '東京', img: 'https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=800&q=80' },
+    { name: 'Osaka', label: '大阪', img: 'https://images.unsplash.com/photo-1590559899731-a382839e5549?auto=format&fit=crop&w=800&q=80' },
+    { name: 'Nagoya', label: '名古屋', img: 'https://images.unsplash.com/photo-1674923207459-98ed5a4dcd06?w=1600&auto=format&fit=crop&q=60' },
+    { name: 'Sapporo', label: '札幌', img: 'https://images.unsplash.com/photo-1572420780547-8fbb45c82f0a?w=1600&auto=format&fit=crop&q=60' },
+    { name: 'Fukuoka', label: '福岡', img: 'https://images.unsplash.com/photo-1750519422241-fdcccf199799?w=1600&auto=format&fit=crop&q=60' },
+    { name: 'New York', label: 'New York', img: 'https://images.unsplash.com/photo-1541336032412-2048a678540d?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=1600&auto=format&fit=crop&q=60' },
+    { name: 'Mawsynram', label: 'Māwsynrām', img: 'https://images.unsplash.com/photo-1532375810709-75b1da00537c?q=80&w=1752&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=1600&auto=format&fit=crop&q=60' },
+  ];
 
   const handleSearch = (e) => {
     e.preventDefault();
