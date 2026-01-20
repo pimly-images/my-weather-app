@@ -173,7 +173,7 @@ const handleGetCurrentLocation = () => {
           <div style={{ background: 'rgba(255,255,255,0.85)', padding: '25px', borderRadius: '20px', color: '#333' }}>
             <h2 style={{ margin: '0', fontSize: '20px' }}>{weather.name}</h2>
             <div style={{ fontSize: '60px' }}>{emoji}</div>
-            <div style={{ fontSize: '40px', fontWeight: 'bold' }}>{Math.round(temp)}℃</div>
+            <div ><span style={{ fontSize: '14px', fontWeight: 'normal' }}>現在</span><span style={{ fontSize: '40px', fontWeight: 'bold' }}>{Math.round(temp)}℃</span></div>
             
             <p style={{ fontSize: '16px', fontWeight: 'bold', color: '#ff6b6b', margin: '5px 0' }}>{advice}</p>
             {windAdvice && <p style={{ color: '#007bff', fontSize: '14px', fontWeight: 'bold', margin: '5px 0' }}>{windAdvice}</p>}
