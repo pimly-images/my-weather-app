@@ -184,7 +184,7 @@ function App() {
         </div>
       </div>
 
-<div style={{ width:'60%',
+<div style={{ width:'100%',
   backgroundColor: 'rgba(255, 255, 255, 0.1)', 
   padding: '15px', 
   borderRadius: '10px', 
