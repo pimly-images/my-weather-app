@@ -9,32 +9,15 @@ function App() {
 
   const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
 
-const getBackgroundColor = (weather) => {
-  switch (weather) {
-    case 'Clear':
-      return 'linear-gradient(135deg, #FFD700, #FF8C00)'; // 晴れ：ゴールド〜オレンジ
-    case 'Clouds':
-      return 'linear-gradient(135deg, #bdc3c7, #2c3e50)'; // 曇り：落ち着いたグレー
-    case 'Rain':
-    case 'Drizzle':
-    case 'Thunderstorm':
-      return 'linear-gradient(135deg, #4b6cb7, #182848)'; // 雨：深いブルー
-    case 'Snow':
-      return 'linear-gradient(135deg, #e6fbff, #87cefa)'; // 雪：淡い水色
-    default:
-      return 'linear-gradient(135deg, #87CEEB, #E0F7FA)'; // 初期状態：爽やかな空色
-  }
-};
-
-  // const cities = [
-  //   { name: 'Tokyo', label: '東京', img: 'https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=800&q=80' },
-  //   { name: 'Osaka', label: '大阪', img: 'https://images.unsplash.com/photo-1590559899731-a382839e5549?auto=format&fit=crop&w=800&q=80' },
-  //   { name: 'Nagoya', label: '名古屋', img: 'https://images.unsplash.com/photo-1674923207459-98ed5a4dcd06?w=1600&auto=format&fit=crop&q=60' },
-  //   { name: 'Sapporo', label: '札幌', img: 'https://images.unsplash.com/photo-1572420780547-8fbb45c82f0a?w=1600&auto=format&fit=crop&q=60' },
-  //   { name: 'Fukuoka', label: '福岡', img: 'https://images.unsplash.com/photo-1750519422241-fdcccf199799?w=1600&auto=format&fit=crop&q=60' },
-  //   { name: 'New York', label: 'New York', img: 'https://images.unsplash.com/photo-1541336032412-2048a678540d?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=1600&auto=format&fit=crop&q=60' },
-  //   { name: 'Mawsynram', label: 'Māwsynrām', img: 'https://images.unsplash.com/photo-1532375810709-75b1da00537c?q=80&w=1752&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=1600&auto=format&fit=crop&q=60' },
-  // ];
+  const cities = [
+    { name: 'Tokyo', label: '東京', img: 'https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=800&q=80' },
+    { name: 'Osaka', label: '大阪', img: 'https://images.unsplash.com/photo-1590559899731-a382839e5549?auto=format&fit=crop&w=800&q=80' },
+    { name: 'Nagoya', label: '名古屋', img: 'https://images.unsplash.com/photo-1674923207459-98ed5a4dcd06?w=1600&auto=format&fit=crop&q=60' },
+    { name: 'Sapporo', label: '札幌', img: 'https://images.unsplash.com/photo-1572420780547-8fbb45c82f0a?w=1600&auto=format&fit=crop&q=60' },
+    { name: 'Fukuoka', label: '福岡', img: 'https://images.unsplash.com/photo-1750519422241-fdcccf199799?w=1600&auto=format&fit=crop&q=60' },
+    { name: 'New York', label: 'New York', img: 'https://images.unsplash.com/photo-1541336032412-2048a678540d?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=1600&auto=format&fit=crop&q=60' },
+    { name: 'Mawsynram', label: 'Māwsynrām', img: 'https://images.unsplash.com/photo-1532375810709-75b1da00537c?q=80&w=1752&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=1600&auto=format&fit=crop&q=60' },
+  ];
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -95,15 +78,11 @@ const getBackgroundColor = (weather) => {
 
   return (
     
-      <div style={{
-  minHeight: '100vh',
-  padding: '20px',
-  // ここで天気のデータ（weather[0].mainなど）を関数に渡す
-  background: getBackgroundColor(weatherData?.weather[0].main),
-  transition: 'background 0.5s ease', // 色がふわっと変わるアニメーション
-  color: 'white',
-  textAlign: 'center'
-}}>
+    <div style={{ 
+      display: 'flex', justifyContent: 'center', alignItems: 'center', 
+      minHeight: '100vh', width: '100vw', backgroundColor: '#87CEEB', 
+      margin: 0, padding: '20px', boxSizing: 'border-box'
+    }}>
 
 <div style={{ display: 'flex', 
   flexDirection: 'column', 
