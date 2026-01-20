@@ -92,16 +92,11 @@ const getBackgroundColor = (weather) => {
 
   return (
     
-    <div style={{
-  minHeight: '100vh',
-  padding: '20px',
-  /* backgroundColor ではなく background にするお！ */
-  /* 関数の結果をそのまま流し込むお */
-  background: getBackgroundColor(weatherData?.weather?.[0]?.main || 'default'),
-  transition: 'background 0.5s ease',
-  color: 'white',
-  textAlign: 'center'
-}}>
+    <div style={{ 
+      display: 'flex', justifyContent: 'center', alignItems: 'center', 
+      minHeight: '100vh', width: '100vw', backgroundColor: '#87CEEB', 
+      margin: 0, padding: '20px', boxSizing: 'border-box'
+    }}>
 
 <div style={{ display: 'flex', 
   flexDirection: 'column', 
