@@ -95,11 +95,12 @@ const getBackgroundColor = (weather) => {
     <div style={{
   minHeight: '100vh',
   padding: '20px',
-  // 一旦、関数を通さずに直接色を指定して、色が変わるかチェック！
-  backgroundColor: 'grey', 
+  // weatherDataの中から現在の天気を取得して関数に渡すお
+background: getBackgroundColor(weatherData?.weather?.[0]?.main || 'default'),
+  transition: 'background 0.5s ease',
   color: 'white',
   textAlign: 'center'
-    }}>
+}}>
 
 <div style={{ display: 'flex', 
   flexDirection: 'column', 
