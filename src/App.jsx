@@ -96,7 +96,7 @@ const getBackgroundColor = (weather) => {
   minHeight: '100vh',
   padding: '20px',
   // 一旦、関数を通さずに直接色を指定して、色が変わるかチェック！
-  backgroundColor: '#87CEEB', 
+  backgroundColor: 'grey', 
   color: 'white',
   textAlign: 'center'
     }}>
