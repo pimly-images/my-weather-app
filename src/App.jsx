@@ -106,7 +106,7 @@ const getBackgroundColor = (weather) => {
   minHeight: '100vh',
   padding: '20px',
   // weatherDataの中から現在の天気を取得して関数に渡すお
-  background: getBackgroundColor(weatherData?.weather[0].main),
+  background: getBackgroundColor(weatherData?.weather?.[0]?.main),
   transition: 'background 0.5s ease',
   color: 'white',
   textAlign: 'center'
