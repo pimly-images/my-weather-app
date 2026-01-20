@@ -22,7 +22,6 @@ const cities = [
 
 // そのすぐ下に、今回提案した背景色関数を置く
 const getBackgroundColor = (weather) => {
-  console.log("今の天気は:", weather);
   switch (weather) {
     case 'Clear': return 'linear-gradient(135deg, #FFD700, #FF8C00)';
     case 'Clouds': return 'linear-gradient(135deg, #bdc3c7, #2c3e50)';
