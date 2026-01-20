@@ -92,10 +92,13 @@ const getBackgroundColor = (weather) => {
 
   return (
     
-    <div style={{ 
-      display: 'flex', justifyContent: 'center', alignItems: 'center', 
-      minHeight: '100vh', width: '100vw', backgroundColor: '#87CEEB', 
-      margin: 0, padding: '20px', boxSizing: 'border-box'
+    <div style={{
+  minHeight: '100vh',
+  padding: '20px',
+  // 一旦、関数を通さずに直接色を指定して、色が変わるかチェック！
+  backgroundColor: '#87CEEB', 
+  color: 'white',
+  textAlign: 'center'
     }}>
 
 <div style={{ display: 'flex', 
