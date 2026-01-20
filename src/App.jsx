@@ -218,6 +218,9 @@ function App() {
     <a href="/clothing.html" style={{ color: 'white', fontSize: '12px', textDecoration: 'underline' }}>
       服装の目安
     </a>
+    <a href="/wind.html" style={{ color: 'white', fontSize: '12px', textDecoration: 'underline' }}>
+      風速や体感温度について
+    </a>
     <a href="/privacy.html" style={{ color: 'white', fontSize: '12px', textDecoration: 'underline' }}>
       プライバシーポリシー
     </a>
