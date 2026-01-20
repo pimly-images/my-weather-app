@@ -206,7 +206,7 @@ const handleGetCurrentLocation = () => {
             {tomorrow && (
               <div style={{ flex: 1, background: 'rgba(0,0,0,0.6)', padding: '15px', borderRadius: '15px', color: 'white' }}>
                 <p style={{ margin: '0', fontSize: '12px', opacity: 0.8 }}>明日</p>
-                <p style={{ fontSize: '10px', margin: '2px 0', color: '#ffd700' }}>日中の気温</p>
+                
                 <p style={{ fontSize: '18px', fontWeight: 'bold', margin: '5px 0' }}>{Math.round(tomorrow.main.temp)}°C</p>
                 <p style={{ fontSize: '10px' }}>{tomorrow.weather[0].description}</p>
                 <p style={{ fontSize: '10px', marginTop: '5px', color: '#87CEEB' }}>💨 {tomorrow.wind.speed}m/s</p>
@@ -215,7 +215,7 @@ const handleGetCurrentLocation = () => {
             {dayAfterTomorrow && (
               <div style={{ flex: 1, background: 'rgba(0,0,0,0.6)', padding: '15px', borderRadius: '15px', color: 'white' }}>
                 <p style={{ margin: '0', fontSize: '12px', opacity: 0.8 }}>明後日</p>
-                <p style={{ fontSize: '10px', margin: '2px 0', color: '#ffd700' }}>日中の気温</p>
+                
                 <p style={{ fontSize: '18px', fontWeight: 'bold', margin: '5px 0' }}>{Math.round(dayAfterTomorrow.main.temp)}°C</p>
                 <p style={{ fontSize: '10px' }}>{dayAfterTomorrow.weather[0].description}</p>
                 <p style={{ fontSize: '10px', marginTop: '5px', color: '#87CEEB' }}>💨 {dayAfterTomorrow.wind.speed}m/s</p>
