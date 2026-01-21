@@ -14,7 +14,7 @@ const cities = [
 
 const getBackgroundColor = (weather) => {
   switch (weather) {
-    case 'Clear': return 'linear-gradient(135deg, #2980B9, #6DD5FA, #FFFFFF)'; 
+    case 'Clear': return 'linear-gradient(135deg, #FFD700, #FF8C00)';
     case 'Clouds': return 'linear-gradient(135deg, #bdc3c7, #2c3e50)';
     case 'Rain':
     case 'Drizzle':
@@ -59,41 +59,28 @@ const handleGetCurrentLocation = () => {
   };
 
   useEffect(() => {
-  async function getTomorrowNoonForecast() {
-      try {
-        const query = city.startsWith('lat=') ? city : `q=${city}`;
-        
-        // 現在の天気もついでにここで取っちゃうとスマートだお！
-        const resCurr = await fetch(`https://api.openweathermap.org/data/2.5/weather?${query}&appid=${API_KEY}&units=metric&lang=ja`);
-        const dataCurr = await resCurr.json();
-        if (resCurr.ok) setWeather(dataCurr);
+    setWeather(null);
+    setTomorrow(null); 
+    setDayAfterTomorrow(null);
 
-        // 予報を取得
-        const resFore = await fetch(`https://api.openweathermap.org/data/2.5/forecast?${query}&appid=${API_KEY}&units=metric&lang=ja`);
-        const dataFore = await resFore.json();
-        
-        if (dataFore.list) {
-        // 全データの中から、お昼の時間帯（11時〜13時）のものを探すお！
-        const dailyNoon = dataFore.list.filter(item => {
-          // dt（秒単位の時刻）を、JavaScriptで扱える日付オブジェクトに変換
-          const date = new Date(item.dt * 1000);
-          
-          // 現地時間の「時」を取得するお
-          const hours = date.getHours();
-          
-          // 11時、12時、13時のいずれかなら「お昼」とみなす！
-          return hours >= 11 && hours <= 13;
-        });
+    const query = city.startsWith('lat=') ? city : `q=${city}`;
 
-        // 0番目が明日、1番目が明後日になるお（※今の時刻によって調整される）
-        if (dailyNoon.length > 0) setTomorrow(dailyNoon[0]);
-        if (dailyNoon.length > 1) setDayAfterTomorrow(dailyNoon[1]);
-      }
-      } catch (error) {
-        console.error(error);
-      }
-    }
-    getTomorrowNoonForecast();
+    fetch(`https://api.openweathermap.org/data/2.5/weather?${query}&appid=${API_KEY}&units=metric&lang=ja`)
+      .then(res => res.json())
+      .then(data => setWeather(data));
+
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?${query}&appid=${API_KEY}&units=metric&lang=ja`)
+      .then(res => res.json())
+      .then(data => {
+        if (data.list) {
+          // ★ 予報データの中から「お昼の12時」のデータだけを抜き出す魔法だお！
+          const noonForecasts = data.list.filter(item => item.dt_txt.includes("12:00:00"));
+          
+          // 0番目が明日、1番目が明後日の「お昼12時」になるお
+          if (noonForecasts.length > 0) setTomorrow(noonForecasts[0]);
+          if (noonForecasts.length > 1) setDayAfterTomorrow(noonForecasts[1]);
+        }
+      });
   }, [city, API_KEY]);
 
   if (!weather || !weather.weather) return <div style={{ textAlign: 'center', marginTop: '50px' }}>読み込み中...</div>;
@@ -186,7 +173,7 @@ const handleGetCurrentLocation = () => {
           <div style={{ background: 'rgba(255,255,255,0.85)', padding: '25px', borderRadius: '20px', color: '#333' }}>
             <h2 style={{ margin: '0', fontSize: '20px' }}>{weather.name}</h2>
             <div style={{ fontSize: '60px' }}>{emoji}</div>
-            <div ><span style={{ fontSize: '16px', fontWeight: 'normal' }}>現在</span><span style={{ fontSize: '40px', fontWeight: 'bold' }}>{Math.round(temp)}℃</span></div>
+            <div ><span style={{ fontSize: '1px', fontWeight: 'normal' }}>現在</span><span style={{ fontSize: '40px', fontWeight: 'bold' }}>{Math.round(temp)}℃</span></div>
             
             <p style={{ fontSize: '16px', fontWeight: 'bold', color: '#ff6b6b', margin: '5px 0' }}>{advice}</p>
             {windAdvice && <p style={{ color: '#007bff', fontSize: '14px', fontWeight: 'bold', margin: '5px 0' }}>{windAdvice}</p>}
@@ -219,10 +206,7 @@ const handleGetCurrentLocation = () => {
             {tomorrow && (
               <div style={{ flex: 1, background: 'rgba(0,0,0,0.6)', padding: '15px', borderRadius: '15px', color: 'white' }}>
                 <p style={{ margin: '0', fontSize: '12px', opacity: 0.8 }}>明日</p>
-                {/* 明日のカードの中に一時的に追加 */}
-<p style={{ fontSize: '10px', opacity: 0.5 }}>
-  予報時間: {new Date(tomorrow.dt * 1000).getHours()}時
-</p>
+                
                 <p style={{ fontSize: '18px', fontWeight: 'bold', margin: '5px 0' }}>{Math.round(tomorrow.main.temp)}°C</p>
                 <p style={{ fontSize: '10px' }}>{tomorrow.weather[0].description}</p>
                 <p style={{ fontSize: '10px', marginTop: '5px', color: '#87CEEB' }}>💨 {tomorrow.wind.speed}m/s</p>
@@ -231,9 +215,7 @@ const handleGetCurrentLocation = () => {
             {dayAfterTomorrow && (
               <div style={{ flex: 1, background: 'rgba(0,0,0,0.6)', padding: '15px', borderRadius: '15px', color: 'white' }}>
                 <p style={{ margin: '0', fontSize: '12px', opacity: 0.8 }}>明後日</p>
-                <p style={{ fontSize: '10px', opacity: 0.5 }}>
-      予報時間: {new Date(dayAfterTomorrow.dt * 1000).getHours()}時
-    </p>
+                
                 <p style={{ fontSize: '18px', fontWeight: 'bold', margin: '5px 0' }}>{Math.round(dayAfterTomorrow.main.temp)}°C</p>
                 <p style={{ fontSize: '10px' }}>{dayAfterTomorrow.weather[0].description}</p>
                 <p style={{ fontSize: '10px', marginTop: '5px', color: '#87CEEB' }}>💨 {dayAfterTomorrow.wind.speed}m/s</p>
@@ -242,7 +224,7 @@ const handleGetCurrentLocation = () => {
           </div>
         </div>
 
-        <div style={{ width:'100%', backgroundColor: 'rgba(255, 255, 255, 0.1)', padding: '15px',margin:'20px', borderRadius: '10px', margin: '20px 0', fontSize: '14px', textAlign: 'left', lineHeight: '1.6' }}>
+        <div style={{ width:'100%', backgroundColor: 'rgba(255, 255, 255, 0.1)', padding: '15px', borderRadius: '10px', margin: '20px 0', fontSize: '14px', textAlign: 'left', lineHeight: '1.6' }}>
           <h2 style={{ fontSize: '16px', margin: '0 0 10px 0' }}>💡 このアプリについて</h2>
           <p>
             「お天気といっしょ」は、単なる気温だけでなく、<b>風速1m/sにつき体感温度が1度下がる</b>という気象学的な視点を取り入れた服装アドバイスアプリです。<br />
